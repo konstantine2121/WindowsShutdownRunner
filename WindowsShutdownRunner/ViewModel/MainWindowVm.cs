@@ -1,24 +1,30 @@
 ﻿using System.ComponentModel;
+using System.Windows.Input;
 using WindowsShutdownRunner.Shell;
 
 namespace WindowsShutdownRunner.ViewModel
 {
     internal class MainWindowVm : INotifyPropertyChanged
     {
+        private const int MinutesInHour = 60;
+        private const int SecondsInMinute = 60;
+        private const int SecondsInHour = SecondsInMinute * MinutesInHour;
+
         #region Fields
         
+        private readonly ShutdownRunner _shutdownExecuter = new ShutdownRunner(new ShellExecuter());
 
-        private readonly ShutdownExecuter _shutdownExecuter = new ShutdownExecuter(new ShellProvider());
-
-        private int _seconds;
+        private int _seconds = 10;
         private int _minutes;
         private int _hours;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
         #endregion Fields
-        
+
         #region Properties
+
+        #region Time
 
         public int Seconds
         {
@@ -50,10 +56,12 @@ namespace WindowsShutdownRunner.ViewModel
             }
         }
 
-        public int TotalSeconds { get; set; }
+        public int TotalSeconds => Seconds + Minutes * SecondsInMinute + Hours * SecondsInHour;
 
+        #endregion Time
+                
         #endregion Properties
-        
+
         #region Functions
 
         public void Shutdown()

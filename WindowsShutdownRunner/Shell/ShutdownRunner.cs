@@ -1,22 +1,22 @@
 ﻿namespace WindowsShutdownRunner.Shell
 {
-    internal class ShutdownExecuter
+    internal class ShutdownRunner
     {
-        private const string Shutdown = "shutdown";
+        private const string ShutdownCommand = "shutdown";
 
         private const string AbortKey = "/a";
-        private const string ForseKey = "/f";
+        private const string ForceKey = "/f";
         private const string ShutdownKey = "/s";
         private const string TimedelayInSecondsKey = "/t";
 
         private string ShutdownAfterFewSecondsCommandPattern = 
-            $"{Shutdown} {ShutdownKey} {ForseKey} {TimedelayInSecondsKey} {{0}}";
+            $"{ShutdownCommand} {ShutdownKey} {ForceKey} {TimedelayInSecondsKey} {{0}}";
         
-        private const string AbortShutdownCommand = $"{Shutdown} {AbortKey}";
+        private const string AbortShutdownCommand = $"{ShutdownCommand} {AbortKey}";
         
-        private readonly ShellProvider _shellProvider;
+        private readonly ShellExecuter _shellProvider;
 
-        public ShutdownExecuter(ShellProvider shellProvider) 
+        public ShutdownRunner(ShellExecuter shellProvider) 
         {
             _shellProvider = shellProvider;
         }

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WindowsShutdownRunner.Shell;
+using WindowsShutdownRunner.ViewModel;
 
 namespace WindowsShutdownRunner
 {
@@ -22,10 +23,22 @@ namespace WindowsShutdownRunner
     public partial class MainWindow : Window
     {
         
+        private readonly MainWindowVm _vm = new MainWindowVm();
 
         public MainWindow()
         {
+            DataContext = _vm;
             InitializeComponent();
+        }
+
+        private void Shutdown_Click(object sender, RoutedEventArgs e)
+        {
+            _vm.Shutdown();
+        }
+
+        private void Abort_Click(object sender, RoutedEventArgs e)
+        {
+            _vm.Abort();
         }
     }
 }

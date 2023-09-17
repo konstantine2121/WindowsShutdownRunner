@@ -7,7 +7,7 @@ namespace WindowsShutdownRunner.Shell
     /// See help here<br/>
     /// https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cmd
     /// </summary>
-    internal class ShellProvider
+    internal class ShellExecuter
     {
         private const string CmdFileName = "cmd.exe";
 
