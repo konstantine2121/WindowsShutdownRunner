@@ -6,7 +6,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:WindowsShutdownRunner"
         mc:Ignorable="d"
-        Title="Выключение компа" Height="450" Width="800"
+        Title="Выключение компа" Height="130" Width="230"
         >
     <Grid>
 
@@ -43,9 +43,8 @@
             </GroupBox>
 
             <StackPanel Orientation="Horizontal" >
-                <Button Content="Выключить" Click="Shutdown_Click" />
-                <Separator Width="20" Background="Transparent" Visibility="Hidden"/>
-                <Button Content="Отмена" Click="Abort_Click" />
+                <Button Content="Выключить" Click="Shutdown_Click" Margin="20,5,40,5"/>
+                <Button Content="Отмена" Click="Abort_Click"  Margin="40,5,20,5" />
             </StackPanel>
             
         </StackPanel>
